@@ -1,10 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Umbrella Corp</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-$END$
+<header class="container">
+    <h1>
+        <img src="images/umbrellacorpLogo.png" alt="icon" class="icon">
+        Umbrella Corp
+    </h1>
+    <nav>
+        <ul class="nav">
+            <li><a href="Homepage.html">Home</a></li>
+            <li><a href="aboutPageUC.html">About</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="section">
+        <h2>Welcome to Umbrella Corporation</h2>
+        <p>We specialize in pharmaceutical innovation, bioengineering breakthroughs, and elite security operations.</p>
+        <div class="image-row">
+            <img src="images\30a97d51c5a03a5afe559e2875ac011c.jpg" alt="image 1">
+            <img src="images\soldierReading.jpg" alt="image 2">
+            <img src="images\resident-evil-umbrella-soldier-cosplay-made-by-me-v0-zw59fk68k82c1.webp" alt="image 3">
+        </div>
+    </section>
+
+    <section class="section" id="dynamic-content">
+        <h2>Our World</h2>
+        <div id="services-container"></div>
+        <div id="team-container"></div>
+        <div id="contacts-container"></div>
+    </section>
+</main>
+
+<footer class="footer">
+    <p><li><a href="https://residentevil.fandom.com/wiki/Umbrella_Corporation">2025 Umbrella Corporation.</a></li> All rights reserved.</p>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const data = {
+            services: [
+                "Pharmaceutical Development",
+                "Bioengineering Research",
+                "Security Operations",
+                "Classified Experiments"
+            ],
+            team: [
+                "Dr. William Birkin - Lead Virologist",
+                "Albert Wesker - Operations Head",
+                "Annette Birkin - Bio Research Lead"
+            ],
+            contacts: [
+                "Email: contact@umbrellacorp.com",
+                "Phone: +1 (555) 123-4567",
+                "Location: Raccoon City HQ"
+            ]
+        };
+
+        const sectionMap = {
+            "services-container": "Services",
+            "team-container": "Team",
+            "contacts-container": "Contacts"
+        };
+
+        const main = document.querySelector("main");
+
+        for (let id in sectionMap) {
+            const section = document.createElement("section");
+            section.id = id;
+            section.className = "section";
+            main.appendChild(section);
+        }
+
+        function renderSection(title, items, containerId) {
+            const container = document.getElementById(containerId);
+            const section = document.createElement("div");
+            const heading = document.createElement("h3");
+            heading.textContent = title;
+            section.appendChild(heading);
+
+            const list = document.createElement("ul");
+            items.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = item;
+                list.appendChild(li);
+            });
+            section.appendChild(list);
+            container.appendChild(section);
+        }
+
+        renderSection("Services", data.services, "services-container");
+        renderSection("Team", data.team, "team-container");
+        renderSection("Contacts", data.contacts, "contacts-container");
+    });
+</script>
 </body>
 </html>
