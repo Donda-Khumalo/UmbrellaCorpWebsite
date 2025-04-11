@@ -81,7 +81,7 @@
         function renderSection(title, items, containerId) {
             const container = document.getElementById(containerId);
             const section = document.createElement("div");
-            const heading = document.createElement("h3");
+            const heading = Object.assign(document.createElement("h3"), { className: "font-semibold"});
             heading.textContent = title;
             section.appendChild(heading);
 
